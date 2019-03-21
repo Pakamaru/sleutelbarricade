@@ -13,6 +13,7 @@ public class Display{
     private int width;
     private int height;
     private String title;
+    private JFrame myFrame;
     public Display(String title, int width, int height) throws IOException {
         this.width = width;
         this.height = height;
@@ -21,7 +22,7 @@ public class Display{
         showField(field);
     }
     public void showField(Field field) throws IOException {
-        JFrame myFrame = new JFrame(title);
+        myFrame = new JFrame(title);
         myFrame.setSize(new Dimension(width, height));
         //myFrame.setLayout(new BorderLayout(0, 0));
         //myFrame.setLayout(new GridLayout(10,10, 2, 2));
@@ -44,5 +45,9 @@ public class Display{
 
     public void createTile(){
 
+    }
+
+    public JFrame getMyFrame() {
+        return myFrame;
     }
 }

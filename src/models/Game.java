@@ -1,17 +1,21 @@
 package models;
 
 import gui.Display;
+import input.KeyManager;
 
 import java.io.IOException;
 
 public class Game{
     private Display display;
     private Player player;
+    private KeyManager keyManager;
 
     private boolean active = true;
 
     public Game() throws IOException {
+        keyManager = new KeyManager();
         display = new Display("Game", 800, 800);
+        display.getMyFrame().addKeyListener(keyManager);
         player = new Player();
     }
 
@@ -19,4 +23,8 @@ public class Game{
         return active;
     }
 
+    public KeyManager getKeyManager() {
+        return keyManager;
+    }
 }
+
