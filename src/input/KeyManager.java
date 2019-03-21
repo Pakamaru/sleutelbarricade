@@ -1,5 +1,7 @@
 package input;
 
+import models.Player;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.security.Key;
@@ -7,9 +9,11 @@ import java.security.Key;
 public class KeyManager implements KeyListener {
     private boolean up, down, left, right;
     private boolean[] keys;
+    private Player player;
 
-    public KeyManager(){
+    public KeyManager(Player player){
         keys = new boolean[5];
+        this.player = player;
     }
 
 
@@ -34,7 +38,7 @@ public class KeyManager implements KeyListener {
         } else if (key == KeyEvent.VK_RIGHT) {
             right = true;
         }
-        System.out.println("key was pressed");
+        player.move((up)? "up": (down)? "down": (left)? "left": (right)? "rigth": "none");
     }
 
     @Override

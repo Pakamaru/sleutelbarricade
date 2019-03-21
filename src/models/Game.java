@@ -12,11 +12,11 @@ public class Game{
 
     private boolean active = true;
 
-    public Game() throws IOException {
-        keyManager = new KeyManager();
+    public Game() throws IOException{
+        player = new Player();
+        keyManager = new KeyManager(player);
         display = new Display("Game", 800, 800);
         display.getMyFrame().addKeyListener(keyManager);
-        player = new Player();
     }
 
     public boolean getActive(){

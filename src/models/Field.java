@@ -1,6 +1,6 @@
 package models;
 
-public class Field {
+public class Field{
     private Tile[][] tiles = new Tile[10][10];
     public Field(){
         for(int i = 0; i<tiles.length; i++){
