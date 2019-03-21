@@ -7,7 +7,7 @@ public class main {
         Game game = new Game();
 
         while(game.getActive()){
-            game
+
 
         }
     }
