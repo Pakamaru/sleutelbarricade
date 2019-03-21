@@ -1,5 +1,6 @@
 package models;
 
+import gui.Assets;
 import gui.Display;
 import input.KeyManager;
 
@@ -12,7 +13,8 @@ public class Game{
 
     private boolean active = true;
 
-    public Game() throws IOException {
+    public Game() {
+        Assets.init();
         keyManager = new KeyManager();
         display = new Display("Game", 800, 800);
         display.getMyFrame().addKeyListener(keyManager);
