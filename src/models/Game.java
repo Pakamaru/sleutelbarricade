@@ -7,15 +7,12 @@ import java.io.IOException;
 public class Game{
     private Display display;
     private Player player;
-    private Field field;
 
     private boolean active = true;
 
     public Game() throws IOException {
-        display = new Display();
+        display = new Display("Game", 800, 800);
         player = new Player();
-        field = new Field();
-        display.showField(field);
     }
 
     public boolean getActive(){
