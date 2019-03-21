@@ -15,6 +15,8 @@ public class Graph extends JComponent{
     private Tile[][] tiles;
     private BufferedImage grass = ImageIO.read(new File("res/grassBlock.png"));
     private BufferedImage sleutel = ImageIO.read(new File("res/sleutel.jpg"));
+    private static int TILE_WIDTH=79;
+    private static int TILE_HEIGHT=79;
 
     public Graph(Field field) throws IOException{
         this.tiles = field.getTiles();
@@ -23,13 +25,21 @@ public class Graph extends JComponent{
         for (int i = 0; i<myGraph.length; i++){
             for (int j = 0; j<myGraph[i].length; j++){
                 switch (tiles[i][j].getType()){
-                    case 0: g.drawImage(grass, 80*i, 80*j, 79, 79, null);
+                    case 0: g.drawImage(grass, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
-                    case 3: g.drawImage(sleutel, 80*i, 80*j, 79, 79, null);
+                    case 3: g.drawImage(sleutel, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
                 }
 
             }
         }
+    }
+
+    public static int getTileWidth() {
+        return TILE_WIDTH;
+    }
+
+    public static int getTileHeight() {
+        return TILE_HEIGHT;
     }
 }
