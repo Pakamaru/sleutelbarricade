@@ -1,9 +1,8 @@
 package models;
 
+import gui.Assets;
 import gui.Display;
 import input.KeyManager;
-
-import java.io.IOException;
 
 public class Game{
     private Display display;
@@ -12,7 +11,8 @@ public class Game{
 
     private boolean active = true;
 
-    public Game() throws IOException{
+    public Game() {
+        Assets.init();
         player = new Player();
         keyManager = new KeyManager(player);
         display = new Display("Game", 800, 800);

@@ -14,14 +14,14 @@ public class Display{
     private int height;
     private String title;
     private JFrame myFrame;
-    public Display(String title, int width, int height) throws IOException {
+    public Display(String title, int width, int height){
         this.width = width;
         this.height = height;
         this.title = title;
         field = new Field();
         showField(field);
     }
-    public void showField(Field field) throws IOException {
+    public void showField(Field field){
         myFrame = new JFrame(title);
         myFrame.setSize(new Dimension(width, height));
         //myFrame.setLayout(new BorderLayout(0, 0));
