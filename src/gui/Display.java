@@ -43,6 +43,10 @@ public class Display{
         myFrame.setVisible(true);
     }
 
+    public void drawPlayer(int[] position){
+
+    }
+
     public void createTile(){
 
     }

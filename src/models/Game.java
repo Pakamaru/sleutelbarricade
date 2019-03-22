@@ -23,7 +23,7 @@ public class Game{
         return active;
     }
 
-    public KeyManager getKeyManager() {
+    public KeyManager getKeyManager(){
         return keyManager;
     }
 }

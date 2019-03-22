@@ -12,7 +12,25 @@ public class Player {
     }
 
     public void move(String direction){
-        System.out.println(direction);
+        if(direction.equals("none"))
+            return;
+        switch(direction){
+            case "up": if(moveIsPossible(y-1)){ this.y--; }
+                break;
+            case "down": if(moveIsPossible(y+1)){ this.y++; }
+                break;
+            case "left": if(moveIsPossible(x-1)){ this.x--; }
+                break;
+            case "right": if(moveIsPossible(x+1)){ this.x++; }
+                break;
+        }
+        System.out.println(x+" - "+y);
+    }
+
+    private boolean moveIsPossible(int newPosition){
+        if(newPosition >= 0 && newPosition <= 10)
+            return true;
+        return false;
     }
 
     public int[] getPosition(){

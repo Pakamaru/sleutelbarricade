@@ -38,7 +38,7 @@ public class KeyManager implements KeyListener {
         } else if (key == KeyEvent.VK_RIGHT) {
             right = true;
         }
-        player.move((up)? "up": (down)? "down": (left)? "left": (right)? "rigth": "none");
+        player.move((up)? "up": (down)? "down": (left)? "left": (right)? "right": "none");
     }
 
     @Override
