@@ -8,14 +8,16 @@ public class Game{
     private Display display;
     private Player player;
     private KeyManager keyManager;
+    private Field field;
 
     private boolean active = true;
 
     public Game() {
         Assets.init();
-        player = new Player();
+        field = new Field();
+        display = new Display("Game", 800, 800, field);
+        player = new Player(display, field);
         keyManager = new KeyManager(player);
-        display = new Display("Game", 800, 800);
         display.getMyFrame().addKeyListener(keyManager);
     }
 

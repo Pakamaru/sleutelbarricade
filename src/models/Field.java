@@ -5,7 +5,7 @@ public class Field{
     public Field(){
         for(int i = 0; i<tiles.length; i++){
             for(int j = 0; j<tiles[i].length; j++){
-                if(i == 3){
+                if(i == 3 && j == 2){
                     tiles[i][j] = new KeyTile();
                 }else {
                     tiles[i][j] = new Tile();

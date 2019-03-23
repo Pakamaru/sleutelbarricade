@@ -1,13 +1,13 @@
 package models;
 
 public class Tile {
-    private int type;
+    protected String type;
 
     public Tile(){
-        this.type = 0;
+        this.type = "tile";
     }
 
-    public int getType() {
+    public String  getType() {
         return type;
     }
 }
