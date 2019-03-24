@@ -9,6 +9,7 @@ public class Player {
     private String orientation;
     private Display ui;
     private Field field;
+    private Pocket pocket;
 
 
     public Player(Display ui, Field field){
@@ -17,6 +18,7 @@ public class Player {
         this.orientation = "down";
         this.ui = ui;
         this.field = field;
+        this.pocket = new Pocket();
     }
 
     public void move(String direction){
@@ -47,28 +49,56 @@ public class Player {
      */
     private boolean moveIsPossible(int[] newPosition){
         if(newPosition[0] >= 0 && newPosition[0] <= 10 && newPosition[1] >= 0 && newPosition[1] <= 10){
+            Object tile = field.getTiles()[newPosition[0]][newPosition[1]];
             switch(field.getTiles()[newPosition[0]][newPosition[1]].getType()){
                 case "tile":
-                    System.out.println("HIT: tile");
-                    return true;
+                    return hitTile(tile);
                 case "key":
-                    System.out.println("HIT: key");
-                    return true;
+                    return hitKey(tile);
                 case "end":
-                    System.out.println("HIT: end");
-                    return true;
+                    return hitEnd(tile);
                 case "barrier":
-                    System.out.println("HIT: barrier");
-                    return false;
+                    return hitBarrier(tile);
                 case "wall":
-                    System.out.println("HIT: wall");
-                    return false;
+                    return hitWall(tile);
             }
         }
         return false;
     }
 
+    public boolean hitWall(Object tile){
+        SolidWall wallTile = (SolidWall) tile;
+        return false;
+    }
+    public boolean hitBarrier(Object tile){
+        Barrier barrierTile = (Barrier) tile;
+        if(this.pocket.getKey().getNumber() == barrierTile.getNumber()){
+            System.out.println("Opened lock!!");
+            return true;
+        }
+        return false;
+    }
+    public boolean hitKey(Object tile){
+        KeyTile keyTile = (KeyTile) tile;
+        this.pocket.setKey(keyTile.getKey());
+        System.out.println(this.pocket.getKey().getNumber());
+        return true;
+    }
+    public boolean hitTile(Object tile){
+        Tile normalTile = (Tile) tile;
+        System.out.println("INSERT WALK SOUND");
+        return true;
+    }
+    public boolean hitEnd(Object tile){
+        EndTile endTile = (EndTile) tile;
+        return false;
+    }
+
     public int[] getPosition(){
         return position;
+    }
+
+    public String getOrientation() {
+        return orientation;
     }
 }

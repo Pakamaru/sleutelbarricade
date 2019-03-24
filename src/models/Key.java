@@ -1,9 +1,9 @@
 package models;
 
-public class Barrier extends Tile{
+public class Key{
     private int number;
-    public Barrier(int number){
-        this.type = "barrier";
+
+    public Key(int number){
         this.number = number;
     }
 
