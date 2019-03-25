@@ -23,16 +23,18 @@ public class Display{
         myFrame.setTitle("Sleutel Barricade");
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myPanel = new JPanel();
-        canvas = new Canvas();
-        canvas.setSize(new Dimension(width, height));
+        myFrame.add(myPanel);
+        //canvas = new Canvas();
+        //canvas.setSize(new Dimension(width, height));
 
-        myFrame.setVisible(true);
+
         this.width = width;
         this.height = height;
         this.title = title;
         this.field = field;
         showField(field);
-        drawPlayer(0,0);
+        myFrame.setVisible(true);
+        //drawPlayer(0,0);
     }
     public void showField(Field field){
         graph = new Graph(field);
@@ -43,13 +45,13 @@ public class Display{
 
     }
 
-    public void drawPlayer(int x, int y){
+    /*public void drawPlayer(int x, int y){
         player = new Player(this, field);
         //player.paint(g);
         myFrame.add(myPanel);
         myFrame.getContentPane().validate();
         myFrame.getContentPane().repaint();
-    }
+    }*/
 
     public void createTile(){
 

@@ -17,6 +17,7 @@ public class Graph extends JComponent{
         this.tiles = field.getTiles();
     }
     public void paintComponent(Graphics g){
+        //g.drawImage(Assets.player, 1000,1000, TILE_WIDTH, TILE_HEIGHT, null);
         for (int i = 0; i<myGraph.length; i++){
             for (int j = 0; j<myGraph[i].length; j++){
                 switch (tiles[i][j].getType()){
