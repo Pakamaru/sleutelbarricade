@@ -58,15 +58,15 @@ public class Player extends JComponent {
         if(newPosition[0] >= 0 && newPosition[0] <= 10 && newPosition[1] >= 0 && newPosition[1] <= 10){
             Object tile = field.getTiles()[newPosition[0]][newPosition[1]];
             switch(field.getTiles()[newPosition[0]][newPosition[1]].getType()){
-                case "tile":
+                case NORMAL:
                     return hitTile(tile);
-                case "key":
+                case KEY:
                     return hitKey(tile);
-                case "end":
+                case END:
                     return hitEnd(tile);
-                case "barrier":
+                case BARRIER:
                     return hitBarrier(tile);
-                case "wall":
+                case WALL:
                     return hitWall(tile);
             }
         }
