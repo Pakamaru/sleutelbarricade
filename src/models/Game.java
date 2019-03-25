@@ -2,6 +2,7 @@ package models;
 
 import gui.Assets;
 import gui.Display;
+import gui.Graph;
 import input.KeyManager;
 
 public class Game{
