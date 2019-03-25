@@ -5,7 +5,7 @@ import models.tiles.*;
 public class Field{
     private Tile[][] tiles;
     public Field(){
-<<<<<<< HEAD
+
         for(int i = 0; i<tiles.length; i++){
             for(int j = 0; j<tiles[i].length; j++) {
                 //Key 300
@@ -67,9 +67,12 @@ public class Field{
                     tiles[i][j] = new SolidWall();
                 }
                 //End Tile
-                else if(i == 9 && j == 9) {
+                else if(i == 9 && j == 9){
                     tiles[i][j] = new EndTile();
-                } else {
+                }
+
+
+                else {
                     tiles[i][j] = new Tile();
                 }
             }
