@@ -42,16 +42,7 @@ public class Display{
         myPanel.add(graph);
         myFrame.getContentPane().validate();
         myFrame.getContentPane().repaint();
-
     }
-
-    /*public void drawPlayer(int x, int y){
-        player = new Player(this, field);
-        //player.paint(g);
-        myFrame.add(myPanel);
-        myFrame.getContentPane().validate();
-        myFrame.getContentPane().repaint();
-    }*/
 
     public void createTile(){
 

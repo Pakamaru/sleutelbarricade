@@ -47,8 +47,8 @@ public class Player extends JComponent {
         this.position[0] = x;
         this.position[1] = y;
         System.out.println(x+" - "+y);
-        paint(g);
-        //ui.drawPlayer(position); //TODO: adding orientation to this when we finally get the gui to work properly
+        //refresh pls
+        //TODO: adding orientation to this when we finally get the gui to work properly
     }
 
     /*

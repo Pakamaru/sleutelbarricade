@@ -10,12 +10,22 @@ import java.awt.image.BufferedImage;
 public class Graph extends JComponent{
     private int [][] myGraph = new int[10][10];
     private Tile[][] tiles;
+    private int x;
+    private int y;
 
     private static int TILE_WIDTH=79;
     private static int TILE_HEIGHT=79;
 
     public Graph(Field field){
         this.tiles = field.getTiles();
+        this.x = 0;
+        this.y = 0;
+    }
+
+    public Graph(Field field, int[] position){
+        this.tiles = field.getTiles();
+        this.x = position[0];
+        this.y = position[1];
     }
     public void paintComponent(Graphics g){
         for (int i = 0; i<myGraph.length; i++){
@@ -29,7 +39,11 @@ public class Graph extends JComponent{
 
             }
         }
-        g.drawImage(Assets.player, 0,0, TILE_WIDTH, TILE_HEIGHT, null);
+    }
+
+    public void refreshPlayer(Graphics g){
+        g.drawImage(Assets.player, 80*x,80*y, TILE_WIDTH, TILE_HEIGHT, null);
+
     }
 
 

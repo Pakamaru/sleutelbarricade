@@ -14,6 +14,9 @@ public class DrawPlayer extends JComponent{
         this.y = y;
 
     }
+    public void refreshPlayer(Graphics g){
+        g.drawImage(Assets.player, 80*x,80*y, 79, 79, null);
+    }
 
 
 }
