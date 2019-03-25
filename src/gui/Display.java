@@ -24,35 +24,28 @@ public class Display{
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myPanel = new JPanel();
         myFrame.add(myPanel);
-        //canvas = new Canvas();
-        //canvas.setSize(new Dimension(width, height));
+        graph = new Graph(field, 0,0);
+        graph.setPreferredSize(new Dimension(800,800));
+        myPanel.add(graph);
 
 
         this.width = width;
         this.height = height;
         this.title = title;
         this.field = field;
-        showField(field);
+        showField(field, 0, 0);
         myFrame.setVisible(true);
-        //drawPlayer(0,0);
     }
-    public void showField(Field field){
-        graph = new Graph(field);
+    public void showField(Field field, int x, int y){
+        myPanel.remove(graph);
+        graph = new Graph(field, x, y);
         graph.setPreferredSize(new Dimension(800,800));
         myPanel.add(graph);
         myFrame.getContentPane().validate();
         myFrame.getContentPane().repaint();
     }
 
-    public void createTile(){
-
-    }
-
     public JFrame getMyFrame() {
         return myFrame;
-    }
-
-    public Canvas getCanvas() {
-        return canvas;
     }
 }

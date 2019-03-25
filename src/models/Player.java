@@ -46,8 +46,9 @@ public class Player extends JComponent {
         }
         this.position[0] = x;
         this.position[1] = y;
+        ui.showField(field, position[0], position[1]);
         System.out.println(x+" - "+y);
-        //refresh pls
+
         //TODO: adding orientation to this when we finally get the gui to work properly
     }
 
