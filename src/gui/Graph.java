@@ -41,4 +41,8 @@ public class Graph extends JComponent{
     public static int getTileHeight() {
         return TILE_HEIGHT;
     }
+
+    public Tile[][] getTiles() {
+        return tiles;
+    }
 }

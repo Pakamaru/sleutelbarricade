@@ -2,6 +2,7 @@ package models;
 
 import gui.Assets;
 import gui.Display;
+import gui.Graph;
 import input.KeyManager;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class Game{
     public Game() {
         Assets.init();
         keyManager = new KeyManager();
-        display = new Display("Game", 800, 800);
+        display = new Display("Game", Graph.getTileWidth()*10+12, Graph.getTileHeight()*10);
         display.getMyFrame().addKeyListener(keyManager);
         player = new Player();
     }
