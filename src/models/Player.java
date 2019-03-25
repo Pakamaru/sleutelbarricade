@@ -60,49 +60,19 @@ public class Player extends JComponent {
             Object tile = field.getTiles()[newPosition[0]][newPosition[1]];
             switch(field.getTiles()[newPosition[0]][newPosition[1]].getType()){
                 case NORMAL:
-                    return hitTile(tile);
+                    return field.hitTile(tile);
                 case KEY:
-                    return hitKey(tile);
+                    return field.hitKey(tile, pocket);
                 case END:
-                    return hitEnd(tile);
+                    return field.hitEnd(tile);
                 case BARRIER:
-                    return hitBarrier(tile);
+                    return field.hitBarrier(tile, this.pocket.getKey().getNumber());
                 case WALL:
-                    return hitWall(tile);
+                    return field.hitWall(tile);
             }
         }
         return false;
     }
-
-    public boolean hitWall(Object tile){
-        SolidWall wallTile = (SolidWall) tile;
-        return false;
-    }
-    public boolean hitBarrier(Object tile){
-        Barrier barrierTile = (Barrier) tile;
-        if(this.pocket.getKey().getNumber() == barrierTile.getNumber()){
-            System.out.println("Opened lock!!");
-            return true;
-        }
-        System.out.println("INSERT BUMP SOUND");
-        return false;
-    }
-    public boolean hitKey(Object tile){
-        KeyTile keyTile = (KeyTile) tile;
-        this.pocket.setKey(keyTile.getKey());
-        System.out.println("Picked up key "+this.pocket.getKey().getNumber());
-        return true;
-    }
-    public boolean hitTile(Object tile){
-        Tile normalTile = (Tile) tile;
-        System.out.println("INSERT WALK SOUND");
-        return true;
-    }
-    public boolean hitEnd(Object tile){
-        EndTile endTile = (EndTile) tile;
-        return false;
-    }
-
 
     public int[] getPosition(){
         return position;

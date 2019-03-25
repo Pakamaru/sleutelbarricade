@@ -32,6 +32,9 @@ public class Graph extends JComponent{
                     case WALL: g.drawImage(Assets.solidWall, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
                     case BARRIER: g.drawImage(Assets.door, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
+                        break;
+                    case END: g.drawImage(Assets.end, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
+                        break;
                 }
 
             }
