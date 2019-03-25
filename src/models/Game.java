@@ -16,7 +16,7 @@ public class Game{
         Assets.init();
         field = new Field();
         display = new Display("Game", 800, 800, field);
-        player = new Player(display, field);
+        //player = new Player(display, field);
         keyManager = new KeyManager(player);
         display.getMyFrame().addKeyListener(keyManager);
     }

@@ -1,8 +1,13 @@
 package models;
 
+import gui.Assets;
 import gui.Display;
+import models.tiles.*;
 
-public class Player {
+import javax.swing.*;
+import java.awt.*;
+
+public class Player extends JComponent {
     private int x;
     private int y;
     private int[] position = {x, y};
@@ -10,6 +15,7 @@ public class Player {
     private Display ui;
     private Field field;
     private Pocket pocket;
+    private Graphics g;
 
 
     public Player(Display ui, Field field){
@@ -41,7 +47,8 @@ public class Player {
         this.position[0] = x;
         this.position[1] = y;
         System.out.println(x+" - "+y);
-        ui.drawPlayer(position); //TODO: adding orientation to this when we finally get the gui to work properly
+        paint(g);
+        //ui.drawPlayer(position); //TODO: adding orientation to this when we finally get the gui to work properly
     }
 
     /*
@@ -76,12 +83,13 @@ public class Player {
             System.out.println("Opened lock!!");
             return true;
         }
+        System.out.println("INSERT BUMP SOUND");
         return false;
     }
     public boolean hitKey(Object tile){
         KeyTile keyTile = (KeyTile) tile;
         this.pocket.setKey(keyTile.getKey());
-        System.out.println(this.pocket.getKey().getNumber());
+        System.out.println("Picked up key "+this.pocket.getKey().getNumber());
         return true;
     }
     public boolean hitTile(Object tile){
@@ -92,6 +100,11 @@ public class Player {
     public boolean hitEnd(Object tile){
         EndTile endTile = (EndTile) tile;
         return false;
+    }
+
+    public void paint(Graphics g){
+        g.fillRect(0,0,10,10);
+        //g.drawImage(Assets.player, x,y,null);
     }
 
     public int[] getPosition(){

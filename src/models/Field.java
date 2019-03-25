@@ -1,5 +1,9 @@
 package models;
 
+import models.tiles.Barrier;
+import models.tiles.KeyTile;
+import models.tiles.Tile;
+
 public class Field{
     private Tile[][] tiles = new Tile[10][10];
     public Field(){

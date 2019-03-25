@@ -1,9 +1,12 @@
-package models;
+package models.tiles;
 
-public class Barrier extends Tile{
+import models.TileType;
+import models.tiles.Tile;
+
+public class Barrier extends Tile {
     private int number;
     public Barrier(int number){
-        this.type = "barrier";
+        this.type = TileType.BARRIER;
         this.number = number;
     }
 

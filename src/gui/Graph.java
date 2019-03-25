@@ -1,14 +1,10 @@
 package gui;
 
 import models.Field;
-import models.Tile;
+import models.tiles.Tile;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class Graph extends JComponent{
     private int [][] myGraph = new int[10][10];
@@ -24,9 +20,9 @@ public class Graph extends JComponent{
         for (int i = 0; i<myGraph.length; i++){
             for (int j = 0; j<myGraph[i].length; j++){
                 switch (tiles[i][j].getType()){
-                    case "tile": g.drawImage(Assets.grass, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
+                    case NORMAL: g.drawImage(Assets.grass, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
-                    case "key": g.drawImage(Assets.key, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
+                    case KEY: g.drawImage(Assets.key, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
                 }
             }
