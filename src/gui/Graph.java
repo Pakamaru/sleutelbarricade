@@ -24,12 +24,11 @@ public class Graph extends JComponent{
         for (int i = 0; i<myGraph.length; i++){
             for (int j = 0; j<myGraph[i].length; j++){
                 switch (tiles[i][j].getType()){
-                    case 0: g.drawImage(Assets.grass, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
+                    case "tile": g.drawImage(Assets.grass, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
-                    case 3: g.drawImage(Assets.key, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
+                    case "key": g.drawImage(Assets.key, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
                 }
-
             }
         }
     }

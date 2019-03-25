@@ -1,12 +1,9 @@
 package gui;
 
 import models.Field;
-import models.Tile;
 
-import javax.rmi.CORBA.Tie;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 public class Display{
     private Field field;
@@ -14,33 +11,40 @@ public class Display{
     private int height;
     private String title;
     private JFrame myFrame;
-    public Display(String title, int width, int height){
+    private JPanel myPanel;
+    private Graph graph;
+    private DrawPlayer player;
+    public Display(String title, int width, int height, Field field){
+        myFrame = new JFrame(title);
+        myFrame.setSize(new Dimension(width, height));
+        myFrame.setTitle("Sleutel Barricade");
+        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        myPanel = new JPanel();
+
+        myFrame.setVisible(true);
         this.width = width;
         this.height = height;
         this.title = title;
-        field = new Field();
+        this.field = field;
         showField(field);
+        drawPlayer(new int[]{0,0});
     }
     public void showField(Field field){
-        myFrame = new JFrame(title);
-        myFrame.setSize(new Dimension(width, height));
-        //myFrame.setLayout(new BorderLayout(0, 0));
-        //myFrame.setLayout(new GridLayout(10,10, 2, 2));
-        myFrame.setTitle("Sleutel Barricade");
-        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        JPanel myPanel = new JPanel();
-        myFrame.add(myPanel);
-
-        Graph graph = new Graph(field);
+        graph = new Graph(field);
         graph.setPreferredSize(new Dimension(800,800));
         myPanel.add(graph);
+        myFrame.getContentPane().validate();
+        myFrame.getContentPane().repaint();
 
+    }
 
-
-
-        myFrame.setVisible(true);
+    public void drawPlayer(int[] position){
+        player = new DrawPlayer(position);
+        player.setPreferredSize(new Dimension(800, 800));
+        myPanel.add(player);
+        myFrame.add(myPanel);
+        myFrame.getContentPane().validate();
+        myFrame.getContentPane().repaint();
     }
 
     public void createTile(){
