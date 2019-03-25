@@ -102,10 +102,6 @@ public class Player extends JComponent {
         return false;
     }
 
-    /*public void paint(Graphics g){
-        g.fillRect(0,0,10,10);
-        //g.drawImage(Assets.player, x,y,null);
-    }*/
 
     public int[] getPosition(){
         return position;

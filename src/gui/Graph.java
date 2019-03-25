@@ -26,19 +26,12 @@ public class Graph extends JComponent{
                     case KEY: g.drawImage(Assets.key, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
                 }
-                addImage(Assets.grass, Assets.player, 0.5f, 10, 10);
 
             }
         }
+        g.drawImage(Assets.player, 0,0, TILE_WIDTH, TILE_HEIGHT, null);
     }
-    private void addImage(BufferedImage buff1, BufferedImage buff2,
-                          float opaque, int x, int y) {
-        Graphics2D g2d = buff1.createGraphics();
-        g2d.setComposite(
-                AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opaque));
-        g2d.drawImage(buff2, x, y, null);
-        g2d.dispose();
-    }
+
 
     public static int getTileWidth() {
         return TILE_WIDTH;
