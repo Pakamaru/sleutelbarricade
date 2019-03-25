@@ -56,7 +56,7 @@ public class Player extends JComponent {
     TODO: Add some more movement validations using the Field class. blah blah blah you know what to do with that big fat butt...
      */
     private boolean moveIsPossible(int[] newPosition){
-        if(newPosition[0] >= 0 && newPosition[0] <= 10 && newPosition[1] >= 0 && newPosition[1] <= 10){
+        if(newPosition[0] >= 0 && newPosition[0] <= 9 && newPosition[1] >= 0 && newPosition[1] <= 9){
             Object tile = field.getTiles()[newPosition[0]][newPosition[1]];
             switch(field.getTiles()[newPosition[0]][newPosition[1]].getType()){
                 case NORMAL:
