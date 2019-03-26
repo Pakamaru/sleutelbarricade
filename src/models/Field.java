@@ -1,5 +1,6 @@
 package models;
 
+import gui.Assets;
 import models.tiles.*;
 
 import java.lang.reflect.Array;
@@ -35,6 +36,13 @@ public class Field{
     }
     public boolean hitTile(Object tile){
         Tile normalTile = (Tile) tile;
+        try {
+            Assets.walk.setFramePosition(0);
+            Assets.walk.start();
+            Assets.walk.setFramePosition(0);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         System.out.println("INSERT WALK SOUND");
         return true;
     }
