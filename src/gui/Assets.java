@@ -8,7 +8,7 @@ import java.io.File;
 
 public class Assets {
     public static BufferedImage grass, key, player, solidWall, door, end;
-    public static Clip walk;
+    public static Clip walk, lock, victory, wall;
     public static void init(){
         grass = ImageLoader.loadImage("/tiles/grassBlock.png");
         key = ImageLoader.loadImage("/tiles/sleutel.jpg");
@@ -16,9 +16,11 @@ public class Assets {
         solidWall = ImageLoader.loadImage("/tiles/SolidWall.jpg");
         door = ImageLoader.loadImage("/tiles/Door.jpg");
         end = ImageLoader.loadImage("/tiles/end.jpg");
-        //sound effects
-        File f = new File("res/sounds/dirt.wav");
-        walk = SoundLoader.loadSound(f);
+        walk = SoundLoader.loadSound("res/sounds/dirt.wav");
+        lock = SoundLoader.loadSound("res/sounds/lock.wav");
+        victory = SoundLoader.loadSound("res/sounds/victory.wav");
+        wall = SoundLoader.loadSound("res/sounds/wall.wav");
+
     }
 
 }

@@ -3,6 +3,7 @@ package models;
 import gui.Assets;
 import models.tiles.*;
 
+import javax.sound.sampled.Clip;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -21,8 +22,22 @@ public class Field{
         Barrier barrierTile = (Barrier) tile;
         if(number == barrierTile.getNumber()){
             this.tiles[barrierTile.getX()][barrierTile.getY()] = new Tile(barrierTile.getX(),barrierTile.getY());
+            try {
+                Assets.lock.setFramePosition(0);
+                Assets.lock.start();
+                Assets.lock.setFramePosition(0);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             System.out.println("Opened lock!!");
             return true;
+        }
+        try {
+            Assets.wall.setFramePosition(0);
+            Assets.wall.start();
+            Assets.wall.setFramePosition(0);
+        }catch (Exception e){
+            e.printStackTrace();
         }
         System.out.println("INSERT BUMP SOUND");
         return false;
@@ -48,6 +63,13 @@ public class Field{
     }
     public boolean hitEnd(Object tile){
         EndTile endTile = (EndTile) tile;
+        try {
+            Assets.victory.setFramePosition(0);
+            Assets.victory.start();
+            Assets.victory.setFramePosition(0);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         System.out.println("GRATS YOU WON BITCH");
         return true;
     }

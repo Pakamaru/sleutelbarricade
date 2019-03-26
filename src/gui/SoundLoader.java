@@ -6,8 +6,9 @@ import javax.sound.sampled.Clip;
 import java.io.File;
 
 public class SoundLoader {
-    public static Clip loadSound(File f){
+    public static Clip loadSound(String path){
         try {
+            File f = new File(path);
             AudioInputStream ais = AudioSystem.getAudioInputStream(f);
             Clip clip = AudioSystem.getClip();
             clip.open(ais);
