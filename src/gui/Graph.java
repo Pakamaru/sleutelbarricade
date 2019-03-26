@@ -24,21 +24,19 @@ public class Graph extends JComponent{
         this.y = y;
     }
     public void paintComponent(Graphics g){
+        g.setColor(Color.red);
         for (int i = 0; i<myGraph.length; i++){
             for (int j = 0; j<myGraph[i].length; j++){
                 switch (tiles[i][j].getType()){
                     case NORMAL: g.drawImage(Assets.grass, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
                     case KEY: g.drawImage(Assets.key, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
-                        g.setColor(Color.red);
-                    g.drawString(""+((KeyTile)tiles[i][j]).getKey().getNumber(), 80*i+TILE_WIDTH/2, 80*j+TILE_HEIGHT);
+                        g.drawString(""+((KeyTile)tiles[i][j]).getKey().getNumber(), 80*i+TILE_WIDTH/2, 80*j+TILE_HEIGHT);
                         break;
                     case WALL: g.drawImage(Assets.solidWall, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
                     case BARRIER: g.drawImage(Assets.door, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
-
                         g.drawString(""+((Barrier)tiles[i][j]).getNumber(), 80*i+TILE_WIDTH/2, 80*j+TILE_HEIGHT);
-
                         break;
                     case END: g.drawImage(Assets.end, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;

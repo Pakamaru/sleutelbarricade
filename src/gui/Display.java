@@ -21,6 +21,8 @@ public class Display{
         myFrame = new JFrame(title);
         myFrame.setSize(new Dimension(width, height));
         myFrame.setTitle("Sleutel Barricade");
+        myFrame.setSize(new Dimension(1200, 850));
+        myFrame.setResizable(false);
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myPanel = new JPanel();
         myFrame.add(myPanel);
