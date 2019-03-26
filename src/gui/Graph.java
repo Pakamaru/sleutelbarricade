@@ -41,7 +41,6 @@ public class Graph extends JComponent{
                     case END: g.drawImage(Assets.end, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
                 }
-
             }
         }
         g.drawImage(Assets.player, 80*x,80*y, TILE_WIDTH, TILE_HEIGHT, null);

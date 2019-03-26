@@ -1,5 +1,6 @@
-package models;
+package models.levels;
 
+import models.Key;
 import models.tiles.*;
 
 public class Level1{

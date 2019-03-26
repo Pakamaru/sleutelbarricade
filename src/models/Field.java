@@ -1,11 +1,8 @@
 package models;
 
 import gui.Assets;
+import models.levels.Level1;
 import models.tiles.*;
-
-import javax.sound.sampled.Clip;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class Field{
     private Tile[][] tiles;
