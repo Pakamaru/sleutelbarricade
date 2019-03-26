@@ -29,7 +29,7 @@ public class Graph extends JComponent{
                     case NORMAL: g.drawImage(Assets.grass, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
                     case KEY: g.drawImage(Assets.key, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
-                    g.drawString("keytile.getkey().get", 80*i+TILE_WIDTH/2, 80*j+TILE_HEIGHT);
+                    g.drawString(""+((KeyTile)tiles[i][j]).getKey().getNumber(), 80*i+TILE_WIDTH/2, 80*j+TILE_HEIGHT);
                         break;
                     case WALL: g.drawImage(Assets.solidWall, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
