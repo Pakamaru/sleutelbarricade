@@ -51,7 +51,7 @@ public class Display{
         myFrame.getContentPane().repaint();
     }
 
-    public void showHint(String msg){
+    public void showTextBox(String msg){
         try{
             myPanel.remove(textBox);
         }catch (Exception e){
