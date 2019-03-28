@@ -1,6 +1,7 @@
 package gui;
 
 import models.Field;
+import models.Game;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,11 +15,13 @@ public class Display{
     private JFrame myFrame;
     private JPanel myPanel;
     private Graph graph;
+    private Game game;
     private JTextArea textBox;
     private TextBox textBoxText;
     private JButton resetButton;
-    public Display(String title, int width, int height){
+    public Display(String title, int width, int height, Game game){
         myFrame = new JFrame(title);
+        this.game = game;
         myFrame.setSize(new Dimension(width, height));
         myFrame.setTitle("Sleutel Barricade");
         myFrame.setSize(new Dimension(1600, 1080));
@@ -61,14 +64,17 @@ public class Display{
         myFrame.getContentPane().repaint();
     }
 
-    public void addResetButton(){
+    private void addResetButton(){
         resetButton = new JButton("Reset");
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //reset level
+                game.levelEnd();
+
             }
         });
+        resetButton.setFocusable(false);
         myPanel.add(resetButton);
 
     }
