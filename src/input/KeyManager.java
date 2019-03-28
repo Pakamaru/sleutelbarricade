@@ -40,6 +40,7 @@ public class KeyManager implements KeyListener {
         } else if (key == KeyEvent.VK_RIGHT) {
             right = true;
         } else if (key == KeyEvent.VK_R) {
+            System.out.println("restart");
             game.levelEnd();
             return;
         }

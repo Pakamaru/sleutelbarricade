@@ -44,7 +44,6 @@ public class Player{
         this.position[0] = x;
         this.position[1] = y;
         ui.showField(field, position[0], position[1]);
-        System.out.println(x+" - "+y);
 
         //TODO: adding orientation to this when we finally get the gui to work properly
     }
@@ -58,6 +57,7 @@ public class Player{
                 case KEY:
                     return field.hitKey(tile, pocket);
                 case END:
+                    System.out.println("tile");
                     game.levelEnd();
                     return field.hitEnd(tile);
                 case BARRIER:

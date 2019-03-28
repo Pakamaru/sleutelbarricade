@@ -21,10 +21,10 @@ public class Game{
     }
 
     public void levelEnd(){
-        System.out.println("test");
         this.field = new Field(display);
         this.player = new Player(display, field, this);
         this.keyManager = new KeyManager(player, this);
+        this.display.getMyFrame().addKeyListener(keyManager);
 
     }
 

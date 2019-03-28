@@ -49,7 +49,6 @@ public class Display{
         this.myPanel.setComponentZOrder(graph, 0);
         this.myFrame.getContentPane().validate();
         this.myFrame.getContentPane().repaint();
-        System.out.println("done");
     }
 
     public void showTextBox(String msg){
