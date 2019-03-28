@@ -5,6 +5,8 @@ import gui.Display;
 import models.levels.Level1;
 import models.tiles.*;
 
+import javax.sound.sampled.Clip;
+
 public class Field{
     private Tile[][] tiles;
     private Display display;
@@ -24,25 +26,11 @@ public class Field{
         if(number == barrierTile.getNumber()){
             this.tiles[barrierTile.getX()][barrierTile.getY()] = new Tile(barrierTile.getX(),barrierTile.getY());
             display.showTextBox("Opened door " + barrierTile.getNumber() + "!");
-            try {
-                Assets.lock.stop();
-                Assets.lock.setFramePosition(0);
-                Assets.lock.start();
-                Assets.lock.setFramePosition(0);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+            playClip(Assets.lock);
             System.out.println("Opened lock!!");
             return true;
         }
-        try {
-            Assets.wall.stop();
-            Assets.wall.setFramePosition(0);
-            Assets.wall.start();
-            Assets.wall.setFramePosition(0);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        playClip(Assets.wall);
         return false;
     }
     public boolean hitKey(Object tile, Pocket pocket){
@@ -54,28 +42,27 @@ public class Field{
     }
     public boolean hitTile(Object tile){
         Tile normalTile = (Tile) tile;
-        try {
-            Assets.walk.stop();
-            Assets.walk.setFramePosition(0);
-            Assets.walk.start();
-            Assets.walk.setFramePosition(0);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        playClip(Assets.walk);
         return true;
     }
     public boolean hitEnd(Object tile){
         EndTile endTile = (EndTile) tile;
+        playClip(Assets.victory);
+        display.showTextBox("Congratulations! You won!");
+        return true;
+    }
+
+    private void playClip(Clip clip){
         try {
-            Assets.victory.stop();
-            Assets.victory.setFramePosition(0);
-            Assets.victory.start();
-            Assets.victory.setFramePosition(0);
+            clip.stop();
+            clip.setFramePosition(0);
+            clip.start();
+            clip.setFramePosition(0);
         }catch (Exception e){
             e.printStackTrace();
         }
-        display.showTextBox("Congratulations! You won!");
-        return true;
+
+
     }
 
     public Tile[][] getTiles() {
