@@ -1,10 +1,8 @@
 package gui;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
+
 import javax.sound.sampled.Clip;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 public class Assets {
     public static BufferedImage grass, key, player, solidWall, door, end;
