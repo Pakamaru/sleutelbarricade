@@ -10,7 +10,8 @@ import java.io.IOException;
 public class ImageLoader {
     public static BufferedImage loadImage(String path) {
         try {
-            return ImageIO.read(ImageLoader.class.getResource(path));
+            File f = new File(path);
+            return ImageIO.read(f);
         } catch (IOException e) {
             e.printStackTrace();
         }
