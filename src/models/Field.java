@@ -21,7 +21,7 @@ public class Field{
         Barrier barrierTile = (Barrier) tile;
         if(number == barrierTile.getNumber()){
             this.tiles[barrierTile.getX()][barrierTile.getY()] = new Tile(barrierTile.getX(),barrierTile.getY());
-            display.showTextBox("Openen door " + barrierTile.getNumber() + "!");
+            display.showTextBox("Opened door " + barrierTile.getNumber() + "!");
             try {
                 Assets.lock.stop();
                 Assets.lock.setFramePosition(0);

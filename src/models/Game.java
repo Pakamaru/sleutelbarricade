@@ -11,6 +11,8 @@ public class Game{
     private KeyManager keyManager;
     private Field field;
 
+    private boolean active;
+
     public Game() {
         Assets.init();
         field = new Field();
@@ -19,9 +21,14 @@ public class Game{
         keyManager = new KeyManager(player);
         display.getMyFrame().addKeyListener(keyManager);
         field.setDisplay(display);
+        this.active = true;
     }
 
     public boolean getActive(){
+        return this.active;
+    }
+
+    public boolean levelActive(){
         return player.playerHitEnd();
     }
 
