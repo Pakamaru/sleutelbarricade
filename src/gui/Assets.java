@@ -12,7 +12,7 @@ public class Assets {
     public static void init(){
         grass = ImageLoader.loadImage("/tiles/grassBlock.png");
         key = ImageLoader.loadImage("/tiles/sleutel.jpg");
-        player = ImageLoader.loadImage("/tiles/mario.png");
+        player = ImageLoader.loadImage("/tiles/amaru.png");
         solidWall = ImageLoader.loadImage("/tiles/SolidWall.jpg");
         door = ImageLoader.loadImage("/tiles/Door.jpg");
         end = ImageLoader.loadImage("/tiles/end.jpg");
