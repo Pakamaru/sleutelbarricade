@@ -2,7 +2,6 @@ package models;
 
 import gui.Assets;
 import gui.Display;
-import gui.Graph;
 import input.KeyManager;
 
 public class Game{
@@ -21,6 +20,7 @@ public class Game{
     }
 
     public void levelEnd(){
+        this.display.getMyFrame().removeKeyListener(keyManager);
         this.field = new Field(display);
         this.player = new Player(display, field, this);
         this.keyManager = new KeyManager(player, this);

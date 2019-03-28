@@ -7,6 +7,7 @@ public class Player{
     private int y;
     private int[] position;
     private String orientation;
+    private boolean hitEnd;
     private Display ui;
     private Field field;
     private Pocket pocket;
@@ -18,6 +19,7 @@ public class Player{
         this.y = 0;
         this.position = new int[]{x, y};
         this.orientation = "down";
+        this.hitEnd = false;
         this.ui = ui;
         this.field = field;
         this.pocket = new Pocket();
@@ -44,6 +46,8 @@ public class Player{
         this.position[0] = x;
         this.position[1] = y;
         ui.showField(field, position[0], position[1]);
+        if(this.hitEnd)
+            game.levelEnd();
 
         //TODO: adding orientation to this when we finally get the gui to work properly
     }
@@ -51,16 +55,14 @@ public class Player{
     private boolean moveIsPossible(int[] newPosition){
         if(newPosition[0] >= 0 && newPosition[0] <= 9 && newPosition[1] >= 0 && newPosition[1] <= 9){
             Object tile = field.getTiles()[newPosition[0]][newPosition[1]];
+            System.out.println(field.getTiles()[newPosition[0]][newPosition[1]].getType());
             switch(field.getTiles()[newPosition[0]][newPosition[1]].getType()){
                 case NORMAL:
                     return field.hitTile(tile);
                 case KEY:
                     return field.hitKey(tile, pocket);
                 case END:
-                    System.out.println("tile");
-                    game.levelEnd();
-                    x=0;
-                    y=0;
+                    this.hitEnd = true;
                     return field.hitEnd(tile);
                 case BARRIER:
                     return field.hitBarrier(tile, this.pocket.getKey().getNumber());
