@@ -4,6 +4,8 @@ import models.Field;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Display{
     private int width;
@@ -14,6 +16,7 @@ public class Display{
     private Graph graph;
     private JTextArea textBox;
     private TextBox textBoxText;
+    private JButton resetButton;
     public Display(String title, int width, int height){
         myFrame = new JFrame(title);
         myFrame.setSize(new Dimension(width, height));
@@ -27,6 +30,7 @@ public class Display{
         textBox.setFocusable(false);
         textBox.setPreferredSize(new Dimension(300, 450));
         myPanel.add(textBox);
+        addResetButton();
 
         textBoxText = new TextBox(textBox);
 
@@ -55,6 +59,18 @@ public class Display{
         textBoxText.writeText(msg);
         myFrame.getContentPane().validate();
         myFrame.getContentPane().repaint();
+    }
+
+    public void addResetButton(){
+        resetButton = new JButton("Reset");
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //reset level
+            }
+        });
+        myPanel.add(resetButton);
+
     }
 
     public JFrame getMyFrame() {

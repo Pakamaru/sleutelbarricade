@@ -59,6 +59,8 @@ public class Player{
                 case END:
                     System.out.println("tile");
                     game.levelEnd();
+                    x=0;
+                    y=0;
                     return field.hitEnd(tile);
                 case BARRIER:
                     return field.hitBarrier(tile, this.pocket.getKey().getNumber());
