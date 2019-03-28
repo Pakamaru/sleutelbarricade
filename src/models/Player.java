@@ -12,10 +12,10 @@ public class Player extends JComponent {
     private int y;
     private int[] position = {x, y};
     private String orientation;
+    private boolean hitEnd = false;
     private Display ui;
     private Field field;
     private Pocket pocket;
-    private Graphics g;
 
 
     public Player(Display ui, Field field){
@@ -52,9 +52,6 @@ public class Player extends JComponent {
         //TODO: adding orientation to this when we finally get the gui to work properly
     }
 
-    /*
-    TODO: Add some more movement validations using the Field class. blah blah blah you know what to do with that big fat butt...
-     */
     private boolean moveIsPossible(int[] newPosition){
         if(newPosition[0] >= 0 && newPosition[0] <= 9 && newPosition[1] >= 0 && newPosition[1] <= 9){
             Object tile = field.getTiles()[newPosition[0]][newPosition[1]];
@@ -64,6 +61,7 @@ public class Player extends JComponent {
                 case KEY:
                     return field.hitKey(tile, pocket);
                 case END:
+                    this.hitEnd = true;
                     return field.hitEnd(tile);
                 case BARRIER:
                     return field.hitBarrier(tile, this.pocket.getKey().getNumber());
@@ -80,5 +78,9 @@ public class Player extends JComponent {
 
     public String getOrientation() {
         return orientation;
+    }
+
+    public boolean playerHitEnd(){
+        return hitEnd;
     }
 }

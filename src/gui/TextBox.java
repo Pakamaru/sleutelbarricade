@@ -1,29 +1,34 @@
 package gui;
 
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
 import java.awt.*;
 
-public class TextBox extends JComponent {
-    private String msg;
-    private static int x = 0;
-    private static int y = 0;
+public class TextBox{
+    private long time;
+    private JTextArea textArea;
     private static int FONTSIZE = 20;
+    private static long STARTTIME = System.currentTimeMillis();
 
-    public TextBox(String msg){
-        this.msg = msg;
+    public TextBox(JTextArea textArea){
+        this.textArea = textArea;
+        this.textArea.setFont(new Font("Arial",Font.PLAIN, FONTSIZE));
+        this.textArea.setEditable(false);
     }
 
-    public void paintComponent(Graphics g){
-        g.setFont(new Font("Arial",Font.PLAIN, FONTSIZE));
-        g.setColor(new Color(255, 255, 255, 175));
-        g.fillRect(x, y, 450, 600);
-        g.setColor(new Color(0, 0, 0, 255));
-
-        g.drawString("Hint:", x, FONTSIZE);
-        for (String line : msg.split("\n")) {
-            int fontsize = FONTSIZE;
-            g.drawString(line, x, fontsize += g.getFontMetrics().getHeight());
+    public void writeText(String msg){
+        if(textArea.getLineCount() == 10) {
+            try {
+                textArea.setText(textArea.getText().substring(textArea.getLineStartOffset(1)));
+            } catch (BadLocationException e) {
+                e.printStackTrace();
+            }
         }
+        time = (System.currentTimeMillis() - STARTTIME);
+        int minutes = (int) time / (60 * 1000);
+        int seconds = (int) (time / 1000) % 60;
+        String str = String.format("%d:%02d - ", minutes, seconds);
+        textArea.append(str + msg + "\n");
 
     }
 }

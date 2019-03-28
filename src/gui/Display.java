@@ -13,11 +13,9 @@ public class Display{
     private String title;
     private JFrame myFrame;
     private JPanel myPanel;
-    private Canvas canvas;
     private Graph graph;
-    private TextBox textBox;
-    private Graphics g;
-    private Player player;
+    private JTextArea textBox;
+    private TextBox textBoxText;
     public Display(String title, int width, int height, Field field){
         myFrame = new JFrame(title);
         myFrame.setSize(new Dimension(width, height));
@@ -27,6 +25,12 @@ public class Display{
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myPanel = new JPanel();
         myFrame.add(myPanel);
+        textBox = new JTextArea();
+        textBox.setFocusable(false);
+        textBox.setPreferredSize(new Dimension(300, 450));
+        myPanel.add(textBox);
+
+        textBoxText = new TextBox(textBox);
 
 
         this.width = width;
@@ -34,7 +38,7 @@ public class Display{
         this.title = title;
         this.field = field;
         showField(field, 0, 0);
-        showHint("Move around :3");
+        showTextBox("Move around :3");
         myFrame.setVisible(true);
     }
     public void showField(Field field, int x, int y){
@@ -52,14 +56,7 @@ public class Display{
     }
 
     public void showTextBox(String msg){
-        try{
-            myPanel.remove(textBox);
-        }catch (Exception e){
-
-        }
-        textBox = new TextBox(msg);
-        textBox.setPreferredSize(new Dimension(450, 600));
-        myPanel.add(textBox);
+        textBoxText.writeText(msg);
         myFrame.getContentPane().validate();
         myFrame.getContentPane().repaint();
     }

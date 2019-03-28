@@ -11,8 +11,6 @@ public class Game{
     private KeyManager keyManager;
     private Field field;
 
-    private boolean active = true;
-
     public Game() {
         Assets.init();
         field = new Field();
@@ -20,10 +18,11 @@ public class Game{
         player = new Player(display, field);
         keyManager = new KeyManager(player);
         display.getMyFrame().addKeyListener(keyManager);
+        field.setDisplay(display);
     }
 
     public boolean getActive(){
-        return active;
+        return player.playerHitEnd();
     }
 
     public KeyManager getKeyManager(){
