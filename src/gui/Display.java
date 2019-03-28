@@ -20,28 +20,23 @@ public class Display{
     private TextBox textBoxText;
     private JButton resetButton;
     public Display(String title, int width, int height, Game game){
-        myFrame = new JFrame(title);
         this.game = game;
+        this.width = width;
+        this.height = height;
+        this.title = title;
+        //frame settings
+        myFrame = new JFrame(title);
         myFrame.setSize(new Dimension(width, height));
         myFrame.setTitle("Sleutel Barricade");
         myFrame.setSize(new Dimension(1600, 1080));
         myFrame.setResizable(false);
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //adding stuff
         myPanel = new JPanel();
         myFrame.add(myPanel);
-        textBox = new JTextArea();
-        textBox.setFocusable(false);
-        textBox.setPreferredSize(new Dimension(300, 450));
-        myPanel.add(textBox);
         addResetButton();
-
-        textBoxText = new TextBox(textBox);
-
-
-        this.width = width;
-        this.height = height;
-        this.title = title;
-        showTextBox("Move around :3");
+        addTextBox();
+        //make everything visible
         myFrame.setVisible(true);
     }
     public void showField(Field field, int x, int y){
@@ -62,6 +57,16 @@ public class Display{
         textBoxText.writeText(msg);
         myFrame.getContentPane().validate();
         myFrame.getContentPane().repaint();
+    }
+
+    private void addTextBox(){
+        textBox = new JTextArea();
+        textBox.setFocusable(false);
+        textBox.setPreferredSize(new Dimension(300, 450));
+        myPanel.add(textBox);
+        textBoxText = new TextBox(textBox);
+
+        showTextBox("Move around :3");
     }
 
     private void addResetButton(){
