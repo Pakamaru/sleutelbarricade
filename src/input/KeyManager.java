@@ -1,19 +1,21 @@
 package input;
 
+import models.Game;
 import models.Player;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.security.Key;
 
 public class KeyManager implements KeyListener {
     private boolean up, down, left, right;
     private boolean[] keys;
     private Player player;
+    private Game game;
 
-    public KeyManager(Player player){
+    public KeyManager(Player player, Game game){
         keys = new boolean[5];
         this.player = player;
+        this.game = game;
     }
 
 
@@ -37,6 +39,9 @@ public class KeyManager implements KeyListener {
             left = true;
         } else if (key == KeyEvent.VK_RIGHT) {
             right = true;
+        } else if (key == KeyEvent.VK_R) {
+            game.levelEnd();
+            return;
         }
         player.move((up)? "up": (down)? "down": (left)? "left": (right)? "right": "none");
     }

@@ -7,10 +7,8 @@ import models.tiles.Tile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class Graph extends JComponent{
-    private int [][] myGraph = new int[10][10];
     private Tile[][] tiles;
     private int x;
     private int y;
@@ -25,8 +23,8 @@ public class Graph extends JComponent{
     }
     public void paintComponent(Graphics g){
         g.setColor(Color.red);
-        for (int i = 0; i<myGraph.length; i++){
-            for (int j = 0; j<myGraph[i].length; j++){
+        for (int i = 0; i<tiles.length; i++){
+            for (int j = 0; j<tiles[i].length; j++){
                 switch (tiles[i][j].getType()){
                     case NORMAL: g.drawImage(Assets.grass, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;

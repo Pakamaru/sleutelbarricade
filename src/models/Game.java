@@ -11,25 +11,21 @@ public class Game{
     private KeyManager keyManager;
     private Field field;
 
-    private boolean active;
-
     public Game() {
         Assets.init();
-        field = new Field();
-        display = new Display("Game", 800, 800, field);
-        player = new Player(display, field);
-        keyManager = new KeyManager(player);
-        display.getMyFrame().addKeyListener(keyManager);
-        field.setDisplay(display);
-        this.active = true;
+        this.display = new Display("Game", 800, 800);
+        this.field = new Field(display);
+        this.player = new Player(display, field, this);
+        this.keyManager = new KeyManager(player, this);
+        this.display.getMyFrame().addKeyListener(keyManager);
     }
 
-    public boolean getActive(){
-        return this.active;
-    }
+    public void levelEnd(){
+        System.out.println("test");
+        this.field = new Field(display);
+        this.player = new Player(display, field, this);
+        this.keyManager = new KeyManager(player, this);
 
-    public boolean levelActive(){
-        return player.playerHitEnd();
     }
 
     public KeyManager getKeyManager(){

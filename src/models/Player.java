@@ -1,30 +1,27 @@
 package models;
 
-import gui.Assets;
 import gui.Display;
-import models.tiles.*;
 
-import javax.swing.*;
-import java.awt.*;
-
-public class Player extends JComponent {
+public class Player{
     private int x;
     private int y;
-    private int[] position = {x, y};
+    private int[] position;
     private String orientation;
-    private boolean hitEnd = false;
     private Display ui;
     private Field field;
     private Pocket pocket;
+    private Game game;
 
 
-    public Player(Display ui, Field field){
+    public Player(Display ui, Field field, Game game){
         this.x = 0;
         this.y = 0;
+        this.position = new int[]{x, y};
         this.orientation = "down";
         this.ui = ui;
         this.field = field;
         this.pocket = new Pocket();
+        this.game = game;
     }
 
     public void move(String direction){
@@ -61,7 +58,7 @@ public class Player extends JComponent {
                 case KEY:
                     return field.hitKey(tile, pocket);
                 case END:
-                    this.hitEnd = true;
+                    game.levelEnd();
                     return field.hitEnd(tile);
                 case BARRIER:
                     return field.hitBarrier(tile, this.pocket.getKey().getNumber());
@@ -78,9 +75,5 @@ public class Player extends JComponent {
 
     public String getOrientation() {
         return orientation;
-    }
-
-    public boolean playerHitEnd(){
-        return hitEnd;
     }
 }

@@ -8,9 +8,11 @@ import models.tiles.*;
 public class Field{
     private Tile[][] tiles;
     private Display display;
-    public Field(){
+    public Field(Display display){
         Level1 lv1 = new Level1();
         this.tiles = lv1.getLevel();
+        this.display = display;
+        display.showField(this, 0, 0);
     }
 
     public boolean hitWall(Object tile){
@@ -78,9 +80,5 @@ public class Field{
 
     public Tile[][] getTiles() {
         return tiles;
-    }
-
-    public void setDisplay(Display display){
-        this.display = display;
     }
 }
