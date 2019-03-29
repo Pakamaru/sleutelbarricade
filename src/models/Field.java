@@ -2,7 +2,9 @@ package models;
 
 import gui.Assets;
 import gui.Display;
+import models.levels.Level;
 import models.levels.Level1;
+import models.levels.Level2;
 import models.tiles.*;
 
 import javax.sound.sampled.Clip;
@@ -10,11 +12,36 @@ import javax.sound.sampled.Clip;
 public class Field{
     private Tile[][] tiles;
     private Display display;
-    public Field(Display display){
-        Level1 lv1 = new Level1();
-        this.tiles = lv1.getLevel();
+    private Object level;
+    public Field(Display display, int curLevel){
+        this.level = getNextLevel(curLevel);
+        this.tiles = ((Level) level).getLevel();
         this.display = display;
         display.showField(this, 0, 0);
+    }
+
+    private Object getRandomLevel(){
+        Object lvl = new Level();
+        int randomNumber = (int) (Math.random()*2)+1;
+        System.out.println(randomNumber);
+        if(randomNumber == 1)
+            lvl = new Level1();
+        if(randomNumber == 2)
+            lvl = new Level2();
+        return lvl;
+    }
+
+    private Object getNextLevel(int nextLevel){
+        Object lvl = new Level();
+        switch(nextLevel){
+            case 1:
+                lvl = new Level1();
+                break;
+            case 2:
+                lvl = new Level2();
+                break;
+        }
+        return lvl;
     }
 
     public boolean hitWall(Object tile){
@@ -61,8 +88,6 @@ public class Field{
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
     }
 
     public Tile[][] getTiles() {

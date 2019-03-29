@@ -20,6 +20,7 @@ public class Graph extends JComponent{
         this.tiles = field.getTiles();
         this.x = x;
         this.y = y;
+
     }
     public void paintComponent(Graphics g){
         g.setColor(Color.red);
@@ -42,17 +43,5 @@ public class Graph extends JComponent{
             }
         }
         g.drawImage(Assets.player, 80*x,80*y, TILE_WIDTH, TILE_HEIGHT, null);
-    }
-
-    public static int getTileWidth() {
-        return TILE_WIDTH;
-    }
-
-    public static int getTileHeight() {
-        return TILE_HEIGHT;
-    }
-
-    public Tile[][] getTiles() {
-        return tiles;
     }
 }

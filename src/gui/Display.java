@@ -75,7 +75,7 @@ public class Display{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //reset level
-                game.levelEnd();
+                game.restartLevel();
 
             }
         });

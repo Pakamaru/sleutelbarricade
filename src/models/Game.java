@@ -9,26 +9,33 @@ public class Game{
     private Player player;
     private KeyManager keyManager;
     private Field field;
+    private int curLevel;
 
     public Game() {
+        this.curLevel = 1;
         Assets.init();
-        this.display = new Display("Game", 800, 800, this);
-        this.field = new Field(display);
+        this.display = new Display("Game", 1000, 1000, this);
+        this.field = new Field(display, curLevel);
         this.player = new Player(display, field, this);
         this.keyManager = new KeyManager(player, this);
         this.display.getMyFrame().addKeyListener(keyManager);
     }
 
     public void levelEnd(){
+        this.curLevel++;
         this.display.getMyFrame().removeKeyListener(keyManager);
-        this.field = new Field(display);
+        this.field = new Field(display, this.curLevel);
         this.player = new Player(display, field, this);
         this.keyManager = new KeyManager(player, this);
         this.display.getMyFrame().addKeyListener(keyManager);
     }
 
     public void restartLevel(){
-
+        this.display.getMyFrame().removeKeyListener(keyManager);
+        this.field = new Field(display, this.curLevel);
+        this.player = new Player(display, field, this);
+        this.keyManager = new KeyManager(player, this);
+        this.display.getMyFrame().addKeyListener(keyManager);
     }
 
     public KeyManager getKeyManager(){
