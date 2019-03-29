@@ -25,6 +25,9 @@ public class Game{
         this.player = new Player(display, field, this);
         this.keyManager = new KeyManager(player, this);
         this.display.getMyFrame().addKeyListener(keyManager);
+    }
+
+    public void restartLevel(){
 
     }
 

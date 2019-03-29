@@ -1,85 +1,20 @@
 package models.levels;
 
-import models.Key;
-import models.tiles.*;
-
-public class Level1{
-    private Tile[][] tiles = new Tile[10][10];
+public class Level1 extends Level{
     public Level1(){
-        for(int i = 0; i<tiles.length; i++){
-            for(int j = 0; j<tiles[i].length; j++) {
-                //Key 300
-                if (i == 0 && j == 8) {
-                    tiles[i][j] = new KeyTile(i, j, new Key(300));
-                } else if (i == 1 && j == 6 || i == 5 && j == 2 || i == 5 && j == 3 || i == 5 && j == 4 || i == 6 && j == 7 || i == 6 && j == 8) {
-                    tiles[i][j] = new Barrier(i, j, 300);
-                }
-                //Key 200
-                else if(i == 7 && j == 9 ){
-                    tiles[i][j] = new KeyTile(i, j, new Key(200));
-                } else if (i == 4 && j == 1 || i == 4 && j == 2 || i == 5 && j == 1 || i == 7 && j == 6){
-                    tiles[i][j] = new Barrier(i, j, 200);
-                }
-                //Key 400
-                else if(i == 2 && j == 9){
-                    tiles[i][j] = new KeyTile(i, j, new Key(400));
-                } else if(i == 7 && j == 4 || i == 7 && j == 5){
-                    tiles[i][j] = new Barrier(i, j, 400);
-                }
-                //key 500
-                else if (i == 3 && j == 4){
-                    tiles[i][j] = new KeyTile(i, j, new Key(500));
-                } else if(i == 4 && j == 3 || i == 4 && j == 4 || i == 5 & j == 9){
-                    tiles[i][j] = new Barrier(i, j, 500);
-                }
-                //Key 600
-                else if (i == 9 && j == 3){
-                    tiles[i][j] = new KeyTile(i, j, new Key(600));
-                } else if(i == 8 && j == 6){
-                    tiles[i][j] = new Barrier(i, j, 600);
-                }
-                //Key 700
-                else if(i == 8 && j == 4){
-                    tiles[i][j] = new KeyTile(i, j, new Key(700));
-                } else if(i == 7 && j == 2 || i ==7 && j == 3){
-                    tiles[i][j] = new Barrier(i, j, 700);
-                }
-                //Solid Walls
-                else if(i == 1 && j == 0 || i == 1 && j == 1 || i == 1 && j == 2 || i == 1 && j == 3 || i == 1 && j == 4
-                        || i == 1 && j == 5 || i == 1 && j == 7 || i == 1 && j == 8 || i == 1 && j == 9 ||
-
-                        i == 2 && j == 5 || i == 2 && j == 7 || i == 2 && j == 8 ||
-
-                        i == 3 && j == 1 || i == 3 && j == 2 || i == 3 && j == 3 || i == 3 && j == 5 ||
-                        i == 3 && j == 7 || i == 3 && j == 8 ||
-
-                        i == 4 && j == 7 || i == 4 && j == 8 ||
-
-                        i == 5 && j == 7 || i == 5 && j == 8 ||
-
-                        i == 6 && j == 0 || i == 6 && j == 1 || i == 6 && j == 2 || i == 6 && j == 3 ||
-                        i == 6 && j == 4 || i == 6 && j == 5 ||
-
-                        i == 8 && j == 1 || i == 8 && j == 2 || i == 8 && j == 3 || i == 8 && j == 5 ||
-                        i == 8 && j == 7 || i == 8 && j == 8 || i == 8 && j == 9 ||
-
-                        i == 9 && j == 4 ||i == 9 && j == 5 ){
-                    tiles[i][j] = new SolidWall(i, j);
-                }
-                //End Tile
-                else if(i == 9 && j == 9){
-                    tiles[i][j] = new EndTile(i, j);
-                }
-
-
-                else {
-                    tiles[i][j] = new Tile(i, j);
-                }
-            }
-        }
-    }
-
-    public Tile[][] getLevel() {
-        return tiles;
+        this.tileCreator = new int[][][]{
+                { {},      {3},     {3},      {},     {},     {},     {},     {3},    {3},    {1,300} },
+                { {},      {3},     {3},      {},     {3},    {3},    {3},    {3},    {3},    {2,200} },
+                { {},      {3},     {3},      {1,500},{},     {},     {2,100},{},     {1,400},{0}},
+                { {},      {3},     {3},      {2,300},{3},    {},     {},     {},     {},     {} },
+                { {},      {3},     {3},      {2,100},{3},    {3},    {3},    {3},    {3},    {} },
+                { {},      {2,200}, {},       {},     {},     {},     {1,100},{1,300},{3},    {} },
+                { {},      {3},     {2,500},  {3},    {3},    {3},    {3},    {3},    {3},    {} },
+                { {1, 200},{3},     {2,300},  {3},    {},     {},     {},     {1,200},{3},    {} },
+                { {},      {3},     {},       {3},    {},     {},     {},     {},     {},     {2,500} },
+                { {},      {3},     {4},      {3},    {1,500},{},     {},     {},     {},     {2,400} }
+        };
+        fixLayout();
+        createMap();
     }
 }
