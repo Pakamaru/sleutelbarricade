@@ -19,6 +19,7 @@ public class Display{
     private JTextArea textBox;
     private TextBox textBoxText;
     private JButton resetButton;
+    private JButton helpButton;
     public Display(String title, int width, int height, Game game){
         this.game = game;
         this.width = width;
@@ -35,6 +36,7 @@ public class Display{
         myPanel = new JPanel();
         myFrame.add(myPanel);
         addResetButton();
+        addHelpButton();
         addTextBox();
         //make everything visible
         myFrame.setVisible(true);
@@ -83,6 +85,27 @@ public class Display{
         myPanel.add(resetButton);
 
     }
+    private void addHelpButton(){
+        helpButton = new JButton("Help");
+        helpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //instructions
+                JOptionPane.showMessageDialog(myPanel, "Try to reach the portal.\n " +
+                        "Use the arrow keys to move. \n"+
+                        "Open doors by picking up keys with the same code.\n " +
+                        "You can only have one key at a time.\n" +
+                        "You can open multiple doors with one key.\n " +
+                        "If you get stuck use the reset button to try again", "Instructions", JOptionPane.INFORMATION_MESSAGE);
+
+
+            }
+        });
+        helpButton.setFocusable(false);
+        myPanel.add(helpButton);
+
+    }
+
 
     public JFrame getMyFrame() {
         return myFrame;
