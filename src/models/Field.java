@@ -5,6 +5,7 @@ import gui.Display;
 import models.levels.Level;
 import models.levels.Level1;
 import models.levels.Level2;
+import models.levels.Level3;
 import models.tiles.*;
 
 import javax.sound.sampled.Clip;
@@ -40,6 +41,8 @@ public class Field{
             case 2:
                 lvl = new Level2();
                 break;
+            case 3:
+                lvl = new Level3();
         }
         return lvl;
     }

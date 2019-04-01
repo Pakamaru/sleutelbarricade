@@ -22,7 +22,12 @@ public class Game{
     }
 
     public void levelEnd(){
-        this.curLevel++;
+        if (curLevel<2){
+            this.curLevel++;
+        }
+        else {
+            curLevel=1;
+        }
         this.display.getMyFrame().removeKeyListener(keyManager);
         this.field = new Field(display, this.curLevel);
         this.player = new Player(display, field, this);
