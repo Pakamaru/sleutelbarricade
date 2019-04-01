@@ -22,7 +22,7 @@ public class Game{
     }
 
     public void levelEnd(){
-        if (curLevel<2){
+        if (curLevel<3){
             this.curLevel++;
         }
         else {
