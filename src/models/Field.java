@@ -21,7 +21,7 @@ public class Field{
     }
 
     private Object getRandomLevel(){
-        Object lvl = new Level();
+        Object lvl = new Object();
         int randomNumber = (int) (Math.random()*2)+1;
         System.out.println(randomNumber);
         if(randomNumber == 1)
@@ -32,7 +32,7 @@ public class Field{
     }
 
     private Object getNextLevel(int nextLevel){
-        Object lvl = new Level();
+        Object lvl = new Object();
         switch(nextLevel){
             case 1:
                 lvl = new Level1();
