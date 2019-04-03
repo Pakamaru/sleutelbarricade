@@ -23,6 +23,8 @@ public class Game{
 
     public void levelEnd(){
         this.curLevel++;
+        if(this.curLevel > field.totalLevels())
+            this.curLevel = 1;
         this.display.getMyFrame().removeKeyListener(keyManager);
         this.field = new Field(display, this.curLevel);
         this.player = new Player(display, field, this);

@@ -3,7 +3,7 @@ package models.levels;
 import models.Key;
 import models.tiles.*;
 
-public class Level{
+public abstract class Level{
     protected Tile[][] tiles = new Tile[10][10];
     protected int[][][] tileCreator;
     protected int[][][] fixedTileCreator;

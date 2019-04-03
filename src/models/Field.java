@@ -13,6 +13,7 @@ public class Field{
     private Tile[][] tiles;
     private Display display;
     private Object level;
+    private final int TOTALLEVELS = 2;
     public Field(Display display, int curLevel){
         this.level = getNextLevel(curLevel);
         this.tiles = ((Level) level).getLevel();
@@ -21,8 +22,8 @@ public class Field{
     }
 
     private Object getRandomLevel(){
-        Object lvl = new Level();
-        int randomNumber = (int) (Math.random()*2)+1;
+        Object lvl = new Object();
+        int randomNumber = (int) (Math.random()*TOTALLEVELS)+1;
         System.out.println(randomNumber);
         if(randomNumber == 1)
             lvl = new Level1();
@@ -32,7 +33,7 @@ public class Field{
     }
 
     private Object getNextLevel(int nextLevel){
-        Object lvl = new Level();
+        Object lvl = new Object();
         switch(nextLevel){
             case 1:
                 lvl = new Level1();
@@ -92,5 +93,9 @@ public class Field{
 
     public Tile[][] getTiles() {
         return tiles;
+    }
+
+    public int totalLevels(){
+        return this.TOTALLEVELS;
     }
 }
