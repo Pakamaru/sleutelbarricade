@@ -10,7 +10,8 @@ public class PlayerTest {
 
     @Test
     public void can_move() {
-        Player player = new Player(new Display("test", 1000, 1000, new Game()), new Field(new Display("test", 1000, 1000, new Game()), 1), new Game());
+        Game game = new Game();
+        Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
 
         player.move("down");
         player.move("down");
@@ -20,12 +21,12 @@ public class PlayerTest {
         int[] pos = player.getPosition();
         int result = pos[1];
         Assert.assertEquals(5, result);
-
     }
 
     @Test
     public void can_get_Position() {
-        Player player = new Player(new Display("test", 1000, 1000, new Game()), new Field(new Display("test", 1000, 1000, new Game()), 1), new Game());
+        Game game = new Game();
+        Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
 
         player.move("right");
         player.move("right");
@@ -39,7 +40,8 @@ public class PlayerTest {
 
     @Test
     public void can_get_Orientation_1() {
-        Player player = new Player(new Display("test", 1000, 1000, new Game()), new Field(new Display("test", 1000, 1000, new Game()), 1), new Game());
+        Game game = new Game();
+        Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
 
         player.move("right");
         String result = player.getOrientation();
@@ -48,7 +50,8 @@ public class PlayerTest {
 
     @Test
     public void can_get_Orientation_2() {
-        Player player = new Player(new Display("test", 1000, 1000, new Game()), new Field(new Display("test", 1000, 1000, new Game()), 1), new Game());
+        Game game = new Game();
+        Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
 
         player.move("up");
         String result = player.getOrientation();

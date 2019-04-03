@@ -26,6 +26,8 @@ public class Player{
         this.game = game;
     }
 
+
+    //TODO: change orientation to ENUM YAY
     public void move(String direction){
         if(direction.equals("none"))
             return;
