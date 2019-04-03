@@ -8,12 +8,10 @@ import java.awt.event.KeyListener;
 
 public class KeyManager implements KeyListener {
     private boolean up, down, left, right;
-    private boolean[] keys;
     private Player player;
     private Game game;
 
     public KeyManager(Player player, Game game){
-        keys = new boolean[5];
         this.player = player;
         this.game = game;
     }

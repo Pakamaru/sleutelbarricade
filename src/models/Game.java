@@ -14,7 +14,7 @@ public class Game{
     public Game() {
         this.curLevel = 1;
         Assets.init();
-        this.display = new Display("Game", 1000, 1000, this);
+        this.display = new Display("Game", 1200, 850, this);
         this.field = new Field(display, curLevel);
         this.player = new Player(display, field, this);
         this.keyManager = new KeyManager(player, this);
