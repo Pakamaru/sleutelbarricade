@@ -15,6 +15,7 @@ public class Field{
     private Display display;
     private Object level;
     private final int TOTALLEVELS = 3;
+
     public Field(Display display, int curLevel){
         this.level = getNextLevel(curLevel);
         this.tiles = ((Level) level).getLevel();
