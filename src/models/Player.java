@@ -2,6 +2,9 @@ package models;
 
 import gui.Display;
 
+/**
+ * Creates the player
+ */
 public class Player{
     private int x;
     private int y;
@@ -13,7 +16,12 @@ public class Player{
     private Pocket pocket;
     private Game game;
 
-
+    /**
+     * Creates a new player
+     * @param ui lets the display know that the field should be drawn again, because the player has moved
+     * @param field gives a value to graph that lets it draw the field
+     * @param game makes it possible for the player to use certain actions
+     */
     public Player(Display ui, Field field, Game game, int x, int y){
         this.x = field.getPlayerStart()[0];
         this.y = field.getPlayerStart()[1];
@@ -26,6 +34,10 @@ public class Player{
         this.game = game;
     }
 
+    /**
+     * initializes the keys to their directions
+     * @param direction the direction the player moves when a key is pressed
+     **/
     public void move(Direction direction){
         if(direction.equals(Direction.NONE))
             return;
@@ -52,6 +64,12 @@ public class Player{
         //TODO: adding orientation to this when we finally get the gui to work properly
     }
 
+    /**
+     * Boolean used to declare if the move is possible
+     * @param newPosition the position of the player
+     * @return if the move is possible, the value will be true and the player will be able to move.
+     * if the move isn't possible, the value will be false and the player will be able to move
+     */
     private boolean moveIsPossible(int[] newPosition){
         if(newPosition[0] >= 0 && newPosition[0] <= 9 && newPosition[1] >= 0 && newPosition[1] <= 9){
             Object tile = field.getTiles()[newPosition[0]][newPosition[1]];
@@ -73,10 +91,18 @@ public class Player{
         return false;
     }
 
+    /**
+     * Getter for the current position of the player
+     * @return the current position of the player
+     */
     public int[] getPosition(){
         return position;
     }
 
+    /**
+     * Getter for the direction the player will be moving
+     * @return the direction the player will be moving
+     */
     public Direction getOrientation() {
         return orientation;
     }

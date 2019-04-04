@@ -5,6 +5,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
 
+/**
+ * Helps with loading sounds
+ */
+
 public class SoundLoader {
     public static Clip loadSound(String path){
         try {

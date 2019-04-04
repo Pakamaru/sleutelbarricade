@@ -4,6 +4,10 @@ import models.Key;
 import models.Player;
 import models.tiles.*;
 
+/**
+ * Creates a layout that makes it easy to create a new level
+ */
+
 public abstract class Level{
     protected Tile[][] tiles = new Tile[10][10];
     protected int[][][] tileCreator;
@@ -31,6 +35,10 @@ public abstract class Level{
         fixedTileCreator = tileCreator;
     }
 
+    /**
+     * Method that fixes the position of the tiles
+     */
+
     public void fixLayout(){
         for(int i = 0; i<tiles.length; i++){
             for(int j = 0; j<tiles[i].length; j++) {
@@ -39,6 +47,9 @@ public abstract class Level{
         }
     }
 
+    /**
+     * Creates the map of the game.
+     */
     public void createMap(){
         for(int i = 0; i<tiles.length; i++){
             for(int j = 0; j<tiles[i].length; j++) {

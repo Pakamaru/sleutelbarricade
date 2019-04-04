@@ -9,6 +9,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ *Paints the display of the game. It creates the field using commands like Jframe and Jpanel
+ */
+
 public class Display{
     private int width;
     private int height;
@@ -47,6 +51,13 @@ public class Display{
         //make everything visible
         myFrame.setVisible(true);
     }
+
+    /**
+     * Creates the inner layer of the display
+     * @param field gives a value to graph that lets it draw the field
+     * @param x is the value of the horizontal coordinate in the game
+     * @param y is the value of the vertical coordinate in the game
+     */
     public void showField(Field field, int x, int y){
         try{
             this.myPanel.remove(graph);
@@ -61,12 +72,19 @@ public class Display{
         this.myFrame.getContentPane().repaint();
     }
 
+    /**
+     * Shows a TextBox
+     * @param msg is the message that is shown in the textbox
+     */
     public void showTextBox(String msg){
         textBoxText.writeText(msg);
         myFrame.getContentPane().validate();
         myFrame.getContentPane().repaint();
     }
 
+    /**
+     * Adds a textbox
+     */
     private void addTextBox(){
         textBox = new JTextArea();
         textBox.setFocusable(false);
@@ -77,6 +95,9 @@ public class Display{
         showTextBox("Move around :3");
     }
 
+    /**
+     * Adds the reset button that lets the player restart a level
+     */
     private void addResetButton(){
         resetButton = new JButton("Reset");
         resetButton.addActionListener(new ActionListener() {
@@ -91,6 +112,10 @@ public class Display{
         buttonPanel.add(resetButton);
 
     }
+
+    /**
+     * Adds the help button that explains to the player what the goal of the game is
+     */
     private void addHelpButton(){
         helpButton = new JButton("Help");
         helpButton.addActionListener(new ActionListener() {
@@ -112,11 +137,12 @@ public class Display{
 
     }
 
-
+    /**
+     * A getter for myFrame
+     * @return returns the myFrame
+     */
     public JFrame getMyFrame() {
         return myFrame;
     }
 
-    public void refreshDisplay(){
-    }
 }

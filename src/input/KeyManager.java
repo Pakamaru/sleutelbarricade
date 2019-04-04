@@ -7,6 +7,9 @@ import models.Player;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Lets certain keys do specific actions
+ */
 public class KeyManager implements KeyListener {
     private Player player;
 
@@ -20,6 +23,10 @@ public class KeyManager implements KeyListener {
 
     }
 
+    /**
+     * Initializes the keys
+     * @param ke pressed key input
+     */
     @Override
     public void keyPressed(KeyEvent ke) {
         int key = ke.getKeyCode();

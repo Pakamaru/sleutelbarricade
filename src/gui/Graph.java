@@ -8,6 +8,10 @@ import models.tiles.Tile;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Class that creates the tiles and gives specific tiles a certain value.
+ */
+
 public class Graph extends JComponent{
     private Tile[][] tiles;
     private int x;
@@ -16,12 +20,24 @@ public class Graph extends JComponent{
     private static int TILE_WIDTH=79;
     private static int TILE_HEIGHT=79;
 
+    /**
+     * Constructor made for the creation of the value of tiles
+     * @param field gives a value to graph that lets it draw the field
+     * @param x is the value of the horizontal coordinate in the game
+     * @param y is the value of the vertical coordinate in the game
+     */
+
     public Graph(Field field, int x, int y){
         this.tiles = field.getTiles();
         this.x = x;
         this.y = y;
 
     }
+
+    /**
+     * Method that paints the tiles in their matching values
+     * @param g allows for the creation of graphics
+     */
     public void paintComponent(Graphics g){
         g.setColor(Color.white);
         g.setFont(new Font("Calibri", Font.BOLD, 16));

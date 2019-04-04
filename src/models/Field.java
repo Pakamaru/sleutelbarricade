@@ -10,6 +10,11 @@ import models.tiles.*;
 
 import javax.sound.sampled.Clip;
 
+/**
+ * Chooses what level is played, also creates certain actions the player can do.
+ * For example, it makes it possible for the player to pick up the keys
+ */
+
 public class Field{
     private Tile[][] tiles;
     private Display display;
@@ -23,6 +28,10 @@ public class Field{
         display.showField(this, this.getPlayerStart()[0], this.getPlayerStart()[1]);
     }
 
+    /**
+     * Randomly chooses what level will be played
+     * @return the level that will be generated
+     */
     private Object getRandomLevel(){
         Object lvl = new Object();
         int randomNumber = (int) (Math.random()*TOTALLEVELS)+1;
@@ -34,6 +43,11 @@ public class Field{
         return lvl;
     }
 
+    /**
+     * When a level is completed, it will load the next level
+     * @param nextLevel variable used to determine what the next level will be
+     * @return the value that will let the game load the right level
+     */
     private Object getNextLevel(int nextLevel){
         Object lvl = new Object();
         switch(nextLevel){
@@ -49,10 +63,24 @@ public class Field{
         return lvl;
     }
 
+    /**
+     * Creates the action that happens when a player hits a wall
+     * @param tile is the specific tiletype that is being hit by the player
+     * @return if the player hits a wall it will return false so the player cant move through the wall
+     */
     public boolean hitWall(Object tile){
         SolidWall wallTile = (SolidWall) tile;
         return false;
     }
+
+    /**
+     * Creates the action that happens when a player hits a barrier
+     * @param tile is the specific tiletype that is being hit by the player
+     * @param number the value of the barrier
+     * @return if the value of the barrier matches the value of the key then the barrier will disappear.It also makes it walkable for the player.
+     * If it doesnt match the value of the key, a sound will be played and the player is not able to walk through the barrier
+     *
+     */
     public boolean hitBarrier(Object tile, int number){
         Barrier barrierTile = (Barrier) tile;
         if(number == barrierTile.getNumber()){
@@ -65,6 +93,13 @@ public class Field{
         playClip(Assets.wall);
         return false;
     }
+
+    /**
+     * Creates the action that happens when a player walks on a keytile
+     * @param tile us the specific tiletype that is being hit by the player
+     * @param pocket the value of the key that is in the pocket of the player
+     * @return replaces the value of the key that is currently in the player's pocket, and makes it walkable for the player
+     */
     public boolean hitKey(Object tile, Pocket pocket){
         KeyTile keyTile = (KeyTile) tile;
         pocket.setKey(keyTile.getKey());
@@ -72,11 +107,23 @@ public class Field{
         display.showTextBox("Picked up key " + pocket.getKey().getNumber() + "!");
         return true;
     }
+
+    /**
+     * Creates the action that happens when a player walks
+     * @param tile is the specific tiletype that the player is going to move to
+     * @return a sound that is played and makes it walkable for the player
+     */
     public boolean hitTile(Object tile){
         Tile normalTile = (Tile) tile;
         playClip(Assets.walk);
         return true;
     }
+
+    /**
+     * Creates the action that happens when a player walks on a endtile
+     * @param tile is the specific tiletype that the player is going to move to
+     * @return a sound that is played and makes it walkable for the player
+     */
     public boolean hitEnd(Object tile){
         EndTile endTile = (EndTile) tile;
         playClip(Assets.victory);
@@ -84,6 +131,10 @@ public class Field{
         return true;
     }
 
+    /**
+     * Used to initialize the soundeffects
+     * @param clip sound effect that is used in the game
+     */
     private void playClip(Clip clip){
         try {
             clip.stop();
@@ -95,10 +146,18 @@ public class Field{
         }
     }
 
+    /**
+     * A getter for the tiles
+     * @return the tiles
+     */
     public Tile[][] getTiles() {
         return tiles;
     }
 
+    /**
+     * A int that is used to declare the ammount of levels that are in the game
+     * @return
+     */
     public int totalLevels(){
         return this.TOTALLEVELS;
     }

@@ -1,5 +1,7 @@
 package models.levels;
-
+/**
+ * Layout that is used to create the second level of the game
+ */
 public class Level2 extends Level{
     public Level2() {
         this.tileCreator = new int[][][]{
