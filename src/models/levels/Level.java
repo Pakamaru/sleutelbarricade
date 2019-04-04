@@ -1,6 +1,7 @@
 package models.levels;
 
 import models.Key;
+import models.Player;
 import models.tiles.*;
 
 public abstract class Level{
@@ -12,6 +13,7 @@ public abstract class Level{
     protected final int BARRIER = 2;
     protected final int WALL = 3;
     protected final int END = 4;
+    protected final int PLAYERSTART = 5;
 
     public Level(){
         tileCreator = new int[][][]{
@@ -57,6 +59,9 @@ public abstract class Level{
                         break;
                     case END:
                         this.tiles[i][j] = new EndTile(i, j);
+                        break;
+                    case PLAYERSTART:
+                        this.tiles[i][j] = new PlayerStart(i, j);
                         break;
                 }
             }

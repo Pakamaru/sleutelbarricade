@@ -14,9 +14,9 @@ public class Player{
     private Game game;
 
 
-    public Player(Display ui, Field field, Game game){
-        this.x = 0;
-        this.y = 0;
+    public Player(Display ui, Field field, Game game, int x, int y){
+        this.x = field.getPlayerStart()[0];
+        this.y = field.getPlayerStart()[1];
         this.position = new int[]{x, y};
         this.orientation = Direction.DOWN;
         this.hitEnd = false;

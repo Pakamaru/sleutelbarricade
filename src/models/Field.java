@@ -19,7 +19,7 @@ public class Field{
         this.level = getNextLevel(curLevel);
         this.tiles = ((Level) level).getLevel();
         this.display = display;
-        display.showField(this, 0, 0);
+        display.showField(this, this.getPlayerStart()[0], this.getPlayerStart()[1]);
     }
 
     private Object getRandomLevel(){
@@ -100,5 +100,17 @@ public class Field{
 
     public int totalLevels(){
         return this.TOTALLEVELS;
+    }
+
+    public int[] getPlayerStart(){
+        int[] pos = {0,0};
+        for(int i = 0; i < tiles.length; i++){
+            for(int j = 0; j < tiles[i].length; j++){
+                if(tiles[i][j].getType() == TileType.PLAYERSTART){
+                    pos = new int[]{i, j};
+                }
+            }
+        }
+        return pos;
     }
 }

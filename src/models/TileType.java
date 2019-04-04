@@ -5,5 +5,6 @@ public enum TileType{
     KEY,
     BARRIER,
     WALL,
-    END
+    END,
+    PLAYERSTART
 }

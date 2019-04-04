@@ -11,7 +11,9 @@ public class PlayerTest {
     @Test
     public void can_move() {
         Game game = new Game();
-        Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
+        Display display = new Display("Game", 1200, 850, game);
+        Field field = new Field(display, 1);
+        Player player = new Player(display, field, game, field.getPlayerStart()[0], field.getPlayerStart()[1]);
 
         player.move(Direction.DOWN);
         player.move(Direction.DOWN);
@@ -26,7 +28,9 @@ public class PlayerTest {
     @Test
     public void can_get_Position() {
         Game game = new Game();
-        Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
+        Display display = new Display("Game", 1200, 850, game);
+        Field field = new Field(display, 1);
+        Player player = new Player(display, field, game, field.getPlayerStart()[0], field.getPlayerStart()[1]);
 
         player.move(Direction.RIGHT);
         player.move(Direction.RIGHT);
@@ -41,7 +45,9 @@ public class PlayerTest {
     @Test
     public void can_get_Orientation_1() {
         Game game = new Game();
-        Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
+        Display display = new Display("Game", 1200, 850, game);
+        Field field = new Field(display, 1);
+        Player player = new Player(display, field, game, field.getPlayerStart()[0], field.getPlayerStart()[1]);
 
         player.move(Direction.RIGHT);
         Direction result = player.getOrientation();
@@ -51,7 +57,9 @@ public class PlayerTest {
     @Test
     public void can_get_Orientation_2() {
         Game game = new Game();
-        Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
+        Display display = new Display("Game", 1200, 850, game);
+        Field field = new Field(display, 1);
+        Player player = new Player(display, field, game, field.getPlayerStart()[0], field.getPlayerStart()[1]);
 
         player.move(Direction.UP);
         Direction result = player.getOrientation();

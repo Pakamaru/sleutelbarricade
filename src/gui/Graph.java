@@ -28,6 +28,7 @@ public class Graph extends JComponent{
         for (int i = 0; i<tiles.length; i++){
             for (int j = 0; j<tiles[i].length; j++){
                 switch (tiles[i][j].getType()){
+                    case PLAYERSTART:
                     case NORMAL: g.drawImage(Assets.grass, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);
                         break;
                     case KEY: g.drawImage(Assets.key, 80*i, 80*j, TILE_WIDTH, TILE_HEIGHT, null);

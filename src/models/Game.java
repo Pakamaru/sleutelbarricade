@@ -16,7 +16,7 @@ public class Game{
         Assets.init();
         this.display = new Display("Game", 1200, 850, this);
         this.field = new Field(display, curLevel);
-        this.player = new Player(display, field, this);
+        this.player = new Player(display, field, this, field.getPlayerStart()[0], field.getPlayerStart()[1]);
         this.keyManager = new KeyManager(player);
         this.display.getMyFrame().addKeyListener(keyManager);
     }
@@ -27,7 +27,7 @@ public class Game{
             this.curLevel = 1;
         this.display.getMyFrame().removeKeyListener(keyManager);
         this.field = new Field(display, this.curLevel);
-        this.player = new Player(display, field, this);
+        this.player = new Player(display, field, this, field.getPlayerStart()[0], field.getPlayerStart()[1]);
         this.keyManager = new KeyManager(player);
         this.display.getMyFrame().addKeyListener(keyManager);
     }
@@ -35,7 +35,7 @@ public class Game{
     public void restartLevel(){
         this.display.getMyFrame().removeKeyListener(keyManager);
         this.field = new Field(display, this.curLevel);
-        this.player = new Player(display, field, this);
+        this.player = new Player(display, field, this, field.getPlayerStart()[0], field.getPlayerStart()[1]);
         this.keyManager = new KeyManager(player);
         this.display.getMyFrame().addKeyListener(keyManager);
     }
