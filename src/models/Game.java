@@ -17,7 +17,7 @@ public class Game{
         this.display = new Display("Game", 1200, 850, this);
         this.field = new Field(display, curLevel);
         this.player = new Player(display, field, this);
-        this.keyManager = new KeyManager(player, this);
+        this.keyManager = new KeyManager(player);
         this.display.getMyFrame().addKeyListener(keyManager);
     }
 
@@ -28,7 +28,7 @@ public class Game{
         this.display.getMyFrame().removeKeyListener(keyManager);
         this.field = new Field(display, this.curLevel);
         this.player = new Player(display, field, this);
-        this.keyManager = new KeyManager(player, this);
+        this.keyManager = new KeyManager(player);
         this.display.getMyFrame().addKeyListener(keyManager);
     }
 
@@ -36,7 +36,7 @@ public class Game{
         this.display.getMyFrame().removeKeyListener(keyManager);
         this.field = new Field(display, this.curLevel);
         this.player = new Player(display, field, this);
-        this.keyManager = new KeyManager(player, this);
+        this.keyManager = new KeyManager(player);
         this.display.getMyFrame().addKeyListener(keyManager);
     }
 

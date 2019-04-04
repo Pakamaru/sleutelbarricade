@@ -13,14 +13,14 @@ public class PlayerTest {
         Game game = new Game();
         Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
 
-        player.move("down");
-        player.move("down");
-        player.move("down");
-        player.move("down");
-        player.move("down");
+        player.move(Direction.DOWN);
+        player.move(Direction.DOWN);
+        player.move(Direction.DOWN);
+        player.move(Direction.DOWN);
+        player.move(Direction.DOWN);
         int[] pos = player.getPosition();
         int result = pos[1];
-        Assert.assertEquals(5, result);
+        Assert.assertEquals(1, result);
     }
 
     @Test
@@ -28,14 +28,14 @@ public class PlayerTest {
         Game game = new Game();
         Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
 
-        player.move("right");
-        player.move("right");
-        player.move("right");
-        player.move("right");
-        player.move("right");
+        player.move(Direction.RIGHT);
+        player.move(Direction.RIGHT);
+        player.move(Direction.RIGHT);
+        player.move(Direction.RIGHT);
+        player.move(Direction.RIGHT);
         int[] pos = player.getPosition();
         int result = pos[0];
-        Assert.assertEquals(0, result);
+        Assert.assertEquals(5, result);
     }
 
     @Test
@@ -43,9 +43,9 @@ public class PlayerTest {
         Game game = new Game();
         Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
 
-        player.move("right");
-        String result = player.getOrientation();
-        Assert.assertEquals("right", result);
+        player.move(Direction.RIGHT);
+        Direction result = player.getOrientation();
+        Assert.assertEquals(Direction.RIGHT, result);
     }
 
     @Test
@@ -53,8 +53,8 @@ public class PlayerTest {
         Game game = new Game();
         Player player = new Player(new Display("test", 1000, 1000, game), new Field(new Display("test", 1000, 1000, game), 1), game);
 
-        player.move("up");
-        String result = player.getOrientation();
-        Assert.assertEquals("up", result);
+        player.move(Direction.UP);
+        Direction result = player.getOrientation();
+        Assert.assertEquals(Direction.UP, result);
     }
 }

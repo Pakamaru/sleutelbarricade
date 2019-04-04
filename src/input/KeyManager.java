@@ -1,5 +1,6 @@
 package input;
 
+import models.Direction;
 import models.Game;
 import models.Player;
 
@@ -7,13 +8,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyManager implements KeyListener {
-    private boolean up, down, left, right;
     private Player player;
-    private Game game;
 
-    public KeyManager(Player player, Game game){
+    public KeyManager(Player player){
         this.player = player;
-        this.game = game;
     }
 
 
@@ -25,24 +23,24 @@ public class KeyManager implements KeyListener {
     @Override
     public void keyPressed(KeyEvent ke) {
         int key = ke.getKeyCode();
-        up = false;
-        down = false;
-        left = false;
-        right = false;
-        if (key == KeyEvent.VK_UP) {
-            up = true;
-        } else if (key == KeyEvent.VK_DOWN) {
-            down = true;
-        } else if (key == KeyEvent.VK_LEFT) {
-            left = true;
-        } else if (key == KeyEvent.VK_RIGHT) {
-            right = true;
-        } else if (key == KeyEvent.VK_R) {
-            System.out.println("restart");
-            game.levelEnd();
-            return;
+        switch(key){
+            case KeyEvent.VK_UP:
+            case KeyEvent.VK_W:
+                player.move(Direction.UP);
+                break;
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_S:
+                player.move(Direction.DOWN);
+                break;
+            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_A:
+                player.move(Direction.LEFT);
+                break;
+            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_D:
+                player.move(Direction.RIGHT);
+                break;
         }
-        player.move((up)? "up": (down)? "down": (left)? "left": (right)? "right": "none");
     }
 
     @Override

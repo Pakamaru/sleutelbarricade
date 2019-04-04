@@ -6,7 +6,7 @@ public class Player{
     private int x;
     private int y;
     private int[] position;
-    private String orientation;
+    private Direction orientation;
     private boolean hitEnd;
     private Display ui;
     private Field field;
@@ -18,7 +18,7 @@ public class Player{
         this.x = 0;
         this.y = 0;
         this.position = new int[]{x, y};
-        this.orientation = "down";
+        this.orientation = Direction.DOWN;
         this.hitEnd = false;
         this.ui = ui;
         this.field = field;
@@ -26,23 +26,21 @@ public class Player{
         this.game = game;
     }
 
-
-    //TODO: change orientation to ENUM YAY
-    public void move(String direction){
-        if(direction.equals("none"))
+    public void move(Direction direction){
+        if(direction.equals(Direction.NONE))
             return;
         switch(direction){
-            case "up": if(moveIsPossible(new int[]{this.position[0], this.position[1]-1})){ this.y--; }
-                this.orientation = "up";
+            case UP: if(moveIsPossible(new int[]{this.position[0], this.position[1]-1})){ this.y--; }
+                this.orientation = Direction.UP;
                 break;
-            case "down": if(moveIsPossible(new int[]{this.position[0], this.position[1]+1})){ this.y++; }
-                this.orientation = "down";
+            case DOWN: if(moveIsPossible(new int[]{this.position[0], this.position[1]+1})){ this.y++; }
+                this.orientation = Direction.DOWN;
                 break;
-            case "left": if(moveIsPossible(new int[]{this.position[0]-1, this.position[1]})){ this.x--; }
-                this.orientation = "left";
+            case LEFT: if(moveIsPossible(new int[]{this.position[0]-1, this.position[1]})){ this.x--; }
+                this.orientation = Direction.LEFT;
                 break;
-            case "right": if(moveIsPossible(new int[]{this.position[0]+1, this.position[1]})){ this.x++; }
-                this.orientation = "right";
+            case RIGHT: if(moveIsPossible(new int[]{this.position[0]+1, this.position[1]})){ this.x++; }
+                this.orientation = Direction.RIGHT;
                 break;
         }
         this.position[0] = x;
@@ -79,7 +77,7 @@ public class Player{
         return position;
     }
 
-    public String getOrientation() {
+    public Direction getOrientation() {
         return orientation;
     }
 }
