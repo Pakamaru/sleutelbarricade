@@ -8,7 +8,7 @@ public class Key{
 
     /**
      * Makes it possible to easily create a key
-     * @param number
+     * @param number value of the key
      */
     public Key(int number){
         this.number = number;
@@ -16,7 +16,7 @@ public class Key{
 
     /**
      * Getter for the value of the key
-     * @return
+     * @return number value of the key
      */
     public int getNumber() {
         return number;

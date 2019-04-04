@@ -74,8 +74,8 @@ public class FieldTest {
                 break;
             case 3:
                 lvl = new Level3();
-        }boolean equal = true;
-
+        }
+        boolean equal = true;
         for(int i = 0; i < ((Level2) lvl).getLevel().length; i++){
             for(int j = 0; j < ((Level2) lvl).getLevel().length; j++){
                 if(((Level2) lvl).getLevel()[i][j].equals(((Level2) level2).getLevel()[i][j]))

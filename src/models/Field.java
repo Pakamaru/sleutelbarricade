@@ -155,8 +155,8 @@ public class Field{
     }
 
     /**
-     * A int that is used to declare the ammount of levels that are in the game
-     * @return
+     * An int that is used to declare the amount of levels that are in the game
+     * @return TOTALLEVELS the amount of levels there are in the game
      */
     public int totalLevels(){
         return this.TOTALLEVELS;

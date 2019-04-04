@@ -128,13 +128,17 @@ public class Display{
                         "You can only have one key at a time.\n" +
                         "You can open multiple doors with one key.\n " +
                         "If you get stuck use the reset button to try again", "Instructions", JOptionPane.INFORMATION_MESSAGE);
-
-
             }
         });
         helpButton.setFocusable(false);
         buttonPanel.add(helpButton);
+    }
 
+    /**
+     * This is a popup that will tell you, you won the game
+     */
+    public void showWinScreen(){
+        JOptionPane.showMessageDialog(myPanel, "You won the game!", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
